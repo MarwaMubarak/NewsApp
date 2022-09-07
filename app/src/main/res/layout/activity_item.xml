@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".Item"
-    android:layout_margin="20dp">
+    android:layout_margin="20dp"
+    android:id="@+id/item">
+
     <ImageView
         android:layout_marginTop="20dp"
         android:id="@+id/image"
@@ -29,6 +31,16 @@
         android:textColor="#5900b3"
 
         />
-    
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/click"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

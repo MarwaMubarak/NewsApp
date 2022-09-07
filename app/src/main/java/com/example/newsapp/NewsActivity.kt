@@ -30,14 +30,7 @@ class NewsActivity : AppCompatActivity() {
         }
 
         /////////////////////////////////////////////
-
-
         val rec:RecyclerView=findViewById(R.id.rec)
-//        rec.setOnClickListener{
-//            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse())
-//            startActivity(browserIntent)
-//        }
-
         rec.layoutManager=LinearLayoutManager(this)
         newsAdapter= NewsAdapter(listOf())
         getData()
@@ -46,7 +39,7 @@ class NewsActivity : AppCompatActivity() {
 
     }
     fun getData(){
-        service.everything("programming", kapiKey).enqueue(object :Callback<Everything>{
+        service.everything("Family", kapiKey).enqueue(object :Callback<Everything>{
             override fun onResponse(call: Call<Everything>, response: Response<Everything>) {
                 if(response.isSuccessful){
                    // val  titles =response.body()?.articles?.map { it.title }
