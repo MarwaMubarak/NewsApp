@@ -5,4 +5,5 @@
     <string name="login">Login</string>
     <string name="logout">Logout</string>
     <string name="click">Click</string>
+    <string name="click_here">Click Here</string>
 </resources>

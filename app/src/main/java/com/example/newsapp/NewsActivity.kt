@@ -19,6 +19,7 @@ const val kapiKey="fcba2deef5df47bbbed4eab04a1900a6"
 //fcba2deef5df47bbbed4eab04a1900a6
 class NewsActivity : AppCompatActivity() {
     private var newsAdapter :NewsAdapter?=null
+    val rec:RecyclerView=findViewById(R.id.rec)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
@@ -30,27 +31,25 @@ class NewsActivity : AppCompatActivity() {
         }
 
         /////////////////////////////////////////////
-        val rec:RecyclerView=findViewById(R.id.rec)
         rec.layoutManager=LinearLayoutManager(this)
         newsAdapter= NewsAdapter(listOf())
         getData()
-        rec.adapter=newsAdapter
 
 
     }
     fun getData(){
-        service.everything("Family", kapiKey).enqueue(object :Callback<Everything>{
+        service.everything("Baby", kapiKey).enqueue(object :Callback<Everything>{
             override fun onResponse(call: Call<Everything>, response: Response<Everything>) {
                 if(response.isSuccessful){
                    // val  titles =response.body()?.articles?.map { it.title }
                     newsAdapter?.news=response.body()?.articles
-                    println("-----------------------------------------------------------")
-                    println("-----------------------------------------------------------")
-
-                    println(response.body())
+                    //println("-----------------------------------------------------------")
+                    //println("-----------------------------------------------------------")
+                    //println(response.body())
+                    rec.adapter=newsAdapter
                     newsAdapter?.notifyDataSetChanged()
-                    println("-----------------------------------------------------------")
-                    println("-----------------------------------------------------------")
+                    //println("-----------------------------------------------------------")
+                    //println("-----------------------------------------------------------")
 
 
                 }

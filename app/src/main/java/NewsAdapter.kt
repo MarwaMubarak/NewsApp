@@ -39,9 +39,6 @@ class NewsAdapter(var news:List<Article?>?):RecyclerView.Adapter<NewsAdapter.New
         holder.title?.text=article?.title
         Picasso.get().load(article?.urlToImage).into(holder.image)
         holder.btn?.setOnClickListener{
-            val uri: Uri = Uri.parse(article?.url)
-//            val intent = Intent(this, uri)
-//            startActivity(intent)
             val openURL = Intent(android.content.Intent.ACTION_VIEW)
             openURL.data = Uri.parse(article?.url)
            it.context.startActivity(openURL)
