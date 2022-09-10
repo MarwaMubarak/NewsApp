@@ -14,18 +14,15 @@ import com.example.newsapp.news.Article
 import com.squareup.picasso.Picasso
 
 
-class NewsAdapter(var news:List<Article?>?):RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
-    var database: DataBasic? = null
+class FavNewsAdapter(var news:List<Article?>?):RecyclerView.Adapter<FavNewsAdapter.NewsViewHolder>() {
     class NewsViewHolder(view: View):RecyclerView.ViewHolder(view){
         var title:TextView?  =null
         var btn:Button?=null
         var image:ImageView? = null
-        var favBtn:Button?=null
         init {
-            title=view.findViewById(R.id.title)
-            image=view.findViewById(R.id.image)
-            btn=view.findViewById(R.id.btn)
-            favBtn=view.findViewById(R.id.favBtn)
+            title=view.findViewById(R.id.title1)
+            image=view.findViewById(R.id.image1)
+            btn=view.findViewById(R.id.btn1)
         }
 
     }
@@ -45,20 +42,9 @@ class NewsAdapter(var news:List<Article?>?):RecyclerView.Adapter<NewsAdapter.New
         holder.btn?.setOnClickListener{
             val openURL = Intent(android.content.Intent.ACTION_VIEW)
             openURL.data = Uri.parse(article?.url)
-           it.context.startActivity(openURL)
+            it.context.startActivity(openURL)
         }
-        holder.favBtn?.setOnClickListener {
-            val newItem =NewsModel(
-                url = article?.url,
-                image=article?.urlToImage,
-                description = article?.description,
-                title = article?.title,
-            )
-            database?.getArticleDao()?.insert(newItem)
-            database = Room.databaseBuilder(it.context, DataBasic::class.java, "basic.db")
-                .allowMainThreadQueries()
-                .build()
-        }
+
 
 
     }

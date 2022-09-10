@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.newsapp">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsApp"
         tools:targetApi="31">
+        <activity
+            android:name=".FavItem"
+            android:exported="false" />
+        <activity
+            android:name=".FavNewsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_fav_news"
+            android:theme="@style/Theme.NewsApp.NoActionBar" />
         <activity
             android:name=".Item"
             android:exported="false" />

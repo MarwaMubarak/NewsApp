@@ -14,52 +14,28 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-const val kapiKey="fcba2deef5df47bbbed4eab04a1900a6"
+const val kapiKey = "fcba2deef5df47bbbed4eab04a1900a6"
 
 //fcba2deef5df47bbbed4eab04a1900a6
 class NewsActivity : AppCompatActivity() {
-    private var newsAdapter :NewsAdapter?=null
-    val rec:RecyclerView=findViewById(R.id.rec)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
-        ///////////////////////////////////////
-        val logout: Button =findViewById(R.id.logoutBtn)
+        val logout: Button = findViewById(R.id.logoutBtn)
+        val fav: Button = findViewById(R.id.favBtn)
+
+        supportFragmentManager.beginTransaction().replace(R.id.f1, NewsFragment()).commit()
         logout.setOnClickListener {
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+        fav.setOnClickListener {
+            val intent =Intent(this,FavNewsActivity::class.java)
+            startActivity(intent)
 
-        /////////////////////////////////////////////
-        rec.layoutManager=LinearLayoutManager(this)
-        newsAdapter= NewsAdapter(listOf())
-        getData()
+        }
 
-
-    }
-    fun getData(){
-        service.everything("Baby", kapiKey).enqueue(object :Callback<Everything>{
-            override fun onResponse(call: Call<Everything>, response: Response<Everything>) {
-                if(response.isSuccessful){
-                   // val  titles =response.body()?.articles?.map { it.title }
-                    newsAdapter?.news=response.body()?.articles
-                    //println("-----------------------------------------------------------")
-                    //println("-----------------------------------------------------------")
-                    //println(response.body())
-                    rec.adapter=newsAdapter
-                    newsAdapter?.notifyDataSetChanged()
-                    //println("-----------------------------------------------------------")
-                    //println("-----------------------------------------------------------")
-
-
-                }
-            }
-
-            override fun onFailure(call: Call<Everything>, t: Throwable) {
-                Toast.makeText(this@NewsActivity,t.localizedMessage,Toast.LENGTH_SHORT).show()
-            }
-
-        })
     }
 
 

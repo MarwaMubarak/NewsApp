@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    tools:context=".Item"
+    tools:context=".FavItem"
     android:layout_margin="10dp"
-    android:id="@+id/item"
-    android:background="@color/white"
-    >
-
+    android:id="@+id/fav_item"
+    android:background="@color/white">
     <ImageView
         android:layout_marginTop="10dp"
-        android:id="@+id/image"
+        android:id="@+id/image1"
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:scaleType="center"
@@ -21,36 +19,25 @@
         app:layout_constraintTop_toTopOf="parent"
         />
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textColor="#5900b3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/image1"
         />
 
     <Button
-        android:id="@+id/btn"
+        android:id="@+id/btn1"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/click_here"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn2"
-        app:layout_constraintTop_toBottomOf="@id/title"
-
-        />
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="@string/favourite"
-        app:layout_constraintStart_toEndOf="@id/btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/title1"
 
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
